@@ -20,14 +20,5 @@ jobs:
             --user ":${AZURE_DEVOPS_TOKEN}" \
             --header "Content-Type: application/json" \
             --request POST \
-            --data '{
-              "resources": {
-                "repositories": {
-                  "self": {
-                    "refName": "refs/heads/master"
-                  }
-                }
-              }
-            }' \
+            --data '{}' \
             "https://dev.azure.com/ddjenkins050284/JobInterview/_apis/pipelines/4/runs?api-version=7.1"
-
