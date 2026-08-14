@@ -3,10 +3,13 @@
 on:
   push:
     branches:
+      - main
       - master
   pull_request:
-    branches: 
+    branches:
+      - main
       - master
+  workflow_dispatch: {}
 
 jobs:
     build:
@@ -14,7 +17,7 @@ jobs:
         runs-on: windows-latest
         steps:
         - name: Azure Pipelines Action
-          uses: Azure/pipelines@v1
+          uses: Azure/pipelines@v2
           with:
             azure-devops-project-url: https://dev.azure.com/ddjenkins050284/JobInterview
             azure-pipeline-name: 'ddjenkins05.gitapp'
