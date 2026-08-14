@@ -3,10 +3,10 @@
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
     branches: 
-      - main
+      - master
 
 jobs:
     build:
@@ -17,5 +17,5 @@ jobs:
           uses: Azure/pipelines@v1
           with:
             azure-devops-project-url: https://dev.azure.com/ddjenkins050284/JobInterview
-            azure-pipeline-name: 'webapppipeline'
+            azure-pipeline-name: 'ddjenkins05.gitapp'
             azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
