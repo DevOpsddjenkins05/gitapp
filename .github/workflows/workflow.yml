@@ -1,28 +1,24 @@
-﻿name: PipelineWorkflow
+name: PipelineWorkflow
 
 on:
+  workflow_dispatch:
   push:
     branches:
-      - main
       - master
-  pull_request:
-    branches:
-      - main
-      - master
-  workflow_dispatch: {}
 
 jobs:
-    build:
-        name: Azure Pipeline
-        runs-on: windows-latest
+  trigger:
+    runs-on: ubuntu-latest
 
+    steps:
+      - name: Trigger Azure DevOps pipeline
+        shell: bash
         env:
-          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
-        steps:
-        - name: Azure Pipelines Action
-          uses: Azure/pipelines@v1
-          with:
-            azure-devops-project-url: https://dev.azure.com/ddjenkins050284/JobInterview
-            azure-pipeline-name: 'DevOpsddjenkins05.gitapp'
-            azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
+          AZURE_DEVOPS_TOKEN: ${{ secrets.AZURE_DEVOPS_TOKEN }}
+        run: |
+          curl --fail-with-body \
+            --user ":${AZURE_DEVOPS_TOKEN}" \
+            --header "Content-Type: application/json" \
+            --request POST \
+            --data '{}' \
+            "https://dev.azure.com/ddjenkins050284/JobInterview/_apis/pipelines/4/runs?api-version=7.1"
