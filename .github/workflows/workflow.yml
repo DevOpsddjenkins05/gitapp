@@ -1,28 +1,17 @@
-﻿name: PipelineWorkflow
+name: PipelineWorkflow
 
 on:
-  push:
-    branches:
-      - main
-      - master
-  pull_request:
-    branches:
-      - main
-      - master
-  workflow_dispatch: {}
+  workflow_dispatch:
 
 jobs:
-    build:
-        name: Azure Pipeline
-        runs-on: windows-latest
+  build:
+    name: Azure Pipeline
+    runs-on: windows-latest
 
-        env:
-          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
-        steps:
-        - name: Azure Pipelines Action
-          uses: Azure/pipelines@v1
-          with:
-            azure-devops-project-url: 'https://dev.azure.com/ddjenkins050284/JobInterview'
-            azure-pipeline-name: 'ddjenkins05.gitapp'
-            azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
+    steps:
+      - name: Azure Pipelines Action
+        uses: Azure/pipelines@v1
+        with:
+          azure-devops-project-url: 'https://dev.azure.com/ddjenkins050284/JobInterview'
+          azure-pipeline-name: 'ddjenkins05.gitapp'
+          azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
