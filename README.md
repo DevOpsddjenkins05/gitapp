@@ -1,0 +1,1 @@
+[![Build Status](https://dev.azure.com/ddjenkins050284/JobInterview/_apis/build/status%2Fddjenkins05.gitapp?branchName=master)](https://dev.azure.com/ddjenkins050284/JobInterview/_build/latest?definitionId=4&branchName=master)
