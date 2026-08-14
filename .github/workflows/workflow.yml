@@ -15,9 +15,13 @@ jobs:
     build:
         name: Azure Pipeline
         runs-on: windows-latest
+
+        env:
+          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
         steps:
         - name: Azure Pipelines Action
-          uses: Azure/pipelines@v2
+          uses: Azure/pipelines@v1
           with:
             azure-devops-project-url: https://dev.azure.com/ddjenkins050284/JobInterview
             azure-pipeline-name: 'ddjenkins05.gitapp'
